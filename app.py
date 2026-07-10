@@ -35,7 +35,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 encoder = VGGEncoder('vgg_normalised.pth').to(device)
 decoder = Decoder().to(device)
-decoder.load_state_dict(torch.load('C:/Users/samar/Documents/NST_Project/experiment/final_exp/decoder_final.pth', map_location=device))
+decoder.load_state_dict(torch.load('experiment/final_exp/decoder_final.pth', map_location=device))
 
 encoder.eval()
 decoder.eval()
@@ -143,8 +143,7 @@ def send_example(filename):
 
 
 if __name__ == '__main__':
-    from werkzeug.serving import run_simple
-    run_simple('localhost', 5000, app, use_reloader=True, use_debugger=True)
+    app.run(debug=True)
 
 
 
